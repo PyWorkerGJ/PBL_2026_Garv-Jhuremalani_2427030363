@@ -4,11 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PBL Presentation | 2026</title>
-
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
 body{background:#020617;color:#f8fafc;font-family:'Plus Jakarta Sans',sans-serif;scroll-behavior:smooth;margin:0}
@@ -18,7 +16,6 @@ section{scroll-margin-top:100px}
 #timerContainer{background:#fff;color:#020617;border:3px solid #3b82f6;box-shadow:0 10px 40px rgba(0,0,0,.8);z-index:1000}
 </style>
 </head>
-
 <body onload="startTimer()">
 
 <div id="timerContainer" class="fixed bottom-6 right-6 px-6 py-3 rounded-3xl flex gap-3 items-center">
@@ -54,23 +51,22 @@ section{scroll-margin-top:100px}
 <span class="gradient-text">Plant Disease Detector with AI Image Validation System</span>
 </h1>
 <p class="text-slate-400 max-w-3xl mx-auto italic text-lg border-l-2 border-blue-500/30 pl-6 text-left">
-Two-stage deep learning system using ResNet-18 that verifies authenticity before disease classification, ensuring reliable plant disease diagnosis.
+Two-stage deep learning system using ResNet-18 that verifies authenticity before disease classification, ensuring reliable plant disease diagnosis and preventing AI-generated image misuse.
 </p>
 </section>
 
 <section id="problem" class="grid md:grid-cols-2 gap-10">
 <div class="glass p-8 rounded-3xl border-l-4 border-blue-600">
 <h2 class="text-2xl font-extrabold mb-4">Problem Statement</h2>
-<p class="text-slate-400 text-sm">
-AI-generated images can mislead disease classifiers. Existing systems assume authenticity.
-</p>
+<p class="text-slate-400 text-sm">Traditional plant disease detection assumes all images are authentic. AI-generated images can mislead classifiers. This system introduces authenticity verification before classification to ensure reliable predictions.</p>
 </div>
 <div class="glass p-8 rounded-3xl">
 <h2 class="text-2xl font-extrabold mb-4">Objectives</h2>
 <ul class="text-slate-400 text-sm space-y-2">
-<li>Detect fake plant images</li>
-<li>Classify diseases accurately</li>
-<li>Ensure reliable AI predictions</li>
+<li>Detect fake or AI-generated plant images</li>
+<li>Classify diseases accurately using CNN</li>
+<li>Build secure two-stage AI pipeline</li>
+<li>Improve reliability of AI predictions</li>
 </ul>
 </div>
 </section>
@@ -80,15 +76,18 @@ AI-generated images can mislead disease classifiers. Existing systems assume aut
 <div class="grid md:grid-cols-3 gap-6">
 <div class="glass p-6 rounded-2xl text-center">
 <i class="fas fa-database text-blue-500 text-2xl mb-3"></i>
-<p class="text-slate-400 text-sm">PlantVillage dataset + synthetic fake images</p>
+<h3 class="font-bold text-xs uppercase mb-2">Dataset</h3>
+<p class="text-slate-400 text-sm">PlantVillage used for real images. Fake images generated using Stable Diffusion and augmentation.</p>
 </div>
 <div class="glass p-6 rounded-2xl text-center">
 <i class="fas fa-microchip text-purple-500 text-2xl mb-3"></i>
-<p class="text-slate-400 text-sm">ResNet-18 CNN models</p>
+<h3 class="font-bold text-xs uppercase mb-2">Model</h3>
+<p class="text-slate-400 text-sm">ResNet-18 CNN trained using PyTorch for authenticity and disease classification.</p>
 </div>
 <div class="glass p-6 rounded-2xl text-center">
 <i class="fas fa-code text-green-500 text-2xl mb-3"></i>
-<p class="text-slate-400 text-sm">Two-stage secure pipeline</p>
+<h3 class="font-bold text-xs uppercase mb-2">Pipeline</h3>
+<p class="text-slate-400 text-sm">Image → Fake Detector → Disease Classifier → Recommendation → Output</p>
 </div>
 </div>
 </section>
@@ -97,10 +96,16 @@ AI-generated images can mislead disease classifiers. Existing systems assume aut
 <h2 class="text-3xl font-black text-center mb-10 uppercase">Literature Review</h2>
 <div class="grid md:grid-cols-2 gap-6">
 <div class="glass p-6 rounded-2xl">
-<p class="text-slate-400 text-sm">Mohanty et al. achieved 99% accuracy using PlantVillage dataset but ignored image authenticity.</p>
+<h3 class="text-blue-400 font-bold text-sm mb-2">Mohanty et al. (2016)</h3>
+<p class="text-slate-400 text-sm">CNN achieved >99% accuracy using PlantVillage dataset but lacked authenticity verification.</p>
 </div>
 <div class="glass p-6 rounded-2xl">
-<p class="text-slate-400 text-sm">Ferentinos compared CNNs but lacked fake image detection.</p>
+<h3 class="text-blue-400 font-bold text-sm mb-2">Ferentinos (2018)</h3>
+<p class="text-slate-400 text-sm">Compared deep learning architectures but did not address fake image detection.</p>
+</div>
+<div class="glass p-6 rounded-2xl md:col-span-2 border border-purple-500/30">
+<h3 class="text-purple-400 font-bold text-sm mb-2">Research Gap</h3>
+<p class="text-slate-400 text-sm">Existing systems focus only on classification accuracy and ignore authenticity verification. This project solves that limitation.</p>
 </div>
 </div>
 </section>
@@ -109,10 +114,12 @@ AI-generated images can mislead disease classifiers. Existing systems assume aut
 <h2 class="text-3xl font-black text-center mb-10 uppercase">Enhancements</h2>
 <div class="grid md:grid-cols-2 gap-6">
 <div class="glass p-6 rounded-2xl">
-<p class="text-slate-400 text-sm">Webcam capture via Streamlit for real-time detection.</p>
+<h3 class="text-green-400 font-bold mb-2">Webcam Integration</h3>
+<p class="text-slate-400 text-sm">Streamlit camera_input enables real-time leaf capture and instant prediction without uploading files.</p>
 </div>
 <div class="glass p-6 rounded-2xl">
-<p class="text-slate-400 text-sm">Recommendation engine for treatment guidance.</p>
+<h3 class="text-green-400 font-bold mb-2">Recommendation Engine</h3>
+<p class="text-slate-400 text-sm">Maps detected disease to treatment advice, transforming system into decision-support tool.</p>
 </div>
 </div>
 </section>
@@ -123,7 +130,7 @@ AI-generated images can mislead disease classifiers. Existing systems assume aut
 <div class="h-56"><canvas id="resultsChart"></canvas></div>
 <div>
 <div class="text-blue-400 font-black text-3xl mb-2">Accuracy: 96.4%</div>
-<p class="text-slate-400 text-sm">Measured using unseen test dataset.</p>
+<p class="text-slate-400 text-sm">Calculated using test dataset evaluation. Fake image detector and disease classifier together provide reliable predictions.</p>
 </div>
 </div>
 </section>
@@ -132,9 +139,11 @@ AI-generated images can mislead disease classifiers. Existing systems assume aut
 <h2 class="text-xs uppercase tracking-widest text-slate-500 mb-6">Academic Credits</h2>
 <div class="flex justify-center gap-8 flex-wrap">
 <div class="glass px-8 py-6 rounded-2xl border-b-4 border-blue-600">
+<p class="text-blue-500 text-xs uppercase">Guide</p>
 <p class="font-bold">Dr. Ashok Kumar Saini</p>
 </div>
 <div class="glass px-8 py-6 rounded-2xl border-b-4 border-slate-700">
+<p class="text-slate-400 text-xs uppercase">Student</p>
 <p class="font-bold">Garv Jhuremalani</p>
 <p class="text-xs text-slate-500">2427030363 | Section-B</p>
 </div>
@@ -146,7 +155,6 @@ AI-generated images can mislead disease classifiers. Existing systems assume aut
 <footer class="py-8 text-center bg-black/40 border-t border-slate-900">
 <p class="text-slate-600 text-xs uppercase">Manipal University Jaipur • CSE • 2026</p>
 </footer>
-
 <script>
 let sec=0;
 function startTimer(){
@@ -157,30 +165,50 @@ document.getElementById("displayTime").innerText=
 `${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
 },1000);
 }
+</script>
 
-new Chart(document.getElementById('resultsChart').getContext('2d'),{
-type:'bar',
-data:{
-labels:['Existing System','Our System'],
-datasets:[{
-data:[70,92],
-backgroundColor:['#334155','#3b82f6'],
-borderRadius:8,
-barThickness:18
-}]
-},
-options:{
-responsive:true,
-maintainAspectRatio:false,
-plugins:{legend:{display:false}},
-scales:{
-y:{beginAtZero:true,grid:{color:'rgba(255,255,255,0.05)'},ticks:{color:'#64748b'}},
-x:{grid:{display:false},ticks:{color:'#64748b'}}
-}
-}
+<script>
+const ctx = document.getElementById('resultsChart').getContext('2d');
+new Chart(ctx,{ ... });
+</script>
+
+<script>
+const ctx = document.getElementById('resultsChart').getContext('2d');
+
+new Chart(ctx,{
+    type:'bar',
+    data:{
+        labels:['Existing System','Our System'],
+        datasets:[{
+            data:[70,92],
+            backgroundColor:['#334155','#3b82f6'],
+            borderRadius:8,
+            barThickness:80,
+            maxBarThickness:200
+        }]
+    },
+    options:{
+        responsive:true,
+        maintainAspectRatio:false,
+        plugins:{
+            legend:{display:false}
+        },
+        scales:{
+            y:{
+                beginAtZero:true,
+                grid:{color:'rgba(255,255,255,0.05)'},
+                ticks:{color:'#64748b'}
+            },
+            x:{
+                grid:{display:false},
+                ticks:{color:'#64748b'}
+            }
+        }
+    }
 });
 </script>
 
+
+
 </body>
 </html>
-
