@@ -1,17 +1,17 @@
-# 🌿 Plant Disease Detector with AI Image Validation System
+#  Plant Disease Detector with AI Image Validation System
 
 A secure **deep learning–based system** that detects plant diseases while verifying image authenticity using a **two-stage AI pipeline**. This ensures **reliable predictions** by preventing AI-generated or manipulated images from influencing disease classification.
 
 ---
 
-## 🔗 Live Website
+##  Live Website
 
 **View the deployed project here:**  
 https://pyworkergj.github.io/PBL_2026_Garv-Jhuremalani_2427030363/
 
 ---
 
-## 📌 Overview
+##  Overview
 
 Traditional plant disease detection systems assume that all input images are authentic. However, **AI-generated images can mislead models** and produce incorrect predictions.
 
@@ -24,7 +24,7 @@ The system uses **ResNet-18 Convolutional Neural Networks** to:
 
 ---
 
-## 🚀 Key Features
+##  Key Features
 
 - ✅ **Fake image detection using deep learning**
 - ✅ **Plant disease classification using ResNet-18 CNN**
@@ -36,7 +36,7 @@ The system uses **ResNet-18 Convolutional Neural Networks** to:
 
 ---
 
-## ⚙️ System Pipeline
+##  System Pipeline
 
 **Image Input**  
 → **Fake Image Detector**  
@@ -46,7 +46,7 @@ The system uses **ResNet-18 Convolutional Neural Networks** to:
 
 ---
 
-## 🧠 Technologies Used
+##  Technologies Used
 
 ### Frontend
 - **HTML**
@@ -68,7 +68,7 @@ The system uses **ResNet-18 Convolutional Neural Networks** to:
 
 ---
 
-## 📊 Results
+##  Results
 
 - **Disease Classification Accuracy:** 96.4%
 - **Improved system reliability**
@@ -77,7 +77,7 @@ The system uses **ResNet-18 Convolutional Neural Networks** to:
 
 ---
 
-## 📚 Literature Basis
+##  Literature Basis
 
 This project builds upon prior research including:
 
@@ -88,5 +88,5 @@ This project improves existing systems by adding **image authenticity verificati
 
 ---
 
-## 📁 Repository Structure
+##  Repository Structure
 
