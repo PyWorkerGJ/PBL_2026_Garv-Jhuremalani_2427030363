@@ -1,109 +1,92 @@
-Plant Disease Detector with AI Image Validation System
+# 🌿 Plant Disease Detector with AI Image Validation System
 
-A secure deep learning–based system that detects plant diseases while verifying image authenticity using a two-stage AI pipeline. This ensures reliable predictions by preventing AI-generated or manipulated images from influencing disease classification.
+A secure **deep learning–based system** that detects plant diseases while verifying image authenticity using a **two-stage AI pipeline**. This ensures **reliable predictions** by preventing AI-generated or manipulated images from influencing disease classification.
 
-Live Website
+---
 
+## 🔗 Live Website
+
+**View the deployed project here:**  
 https://pyworkergj.github.io/PBL_2026_Garv-Jhuremalani_2427030363/
 
-Overview
+---
 
-Traditional plant disease detection systems assume that all input images are authentic. However, AI-generated images can mislead models and produce incorrect predictions. This project introduces an authenticity verification stage before disease classification to ensure trustworthy and secure results.
+## 📌 Overview
 
-The system uses ResNet-18 Convolutional Neural Networks to first detect whether an image is real or fake. Only authentic images proceed to the disease classification stage.
+Traditional plant disease detection systems assume that all input images are authentic. However, **AI-generated images can mislead models** and produce incorrect predictions.
 
-Features
+This project introduces an **authenticity verification stage** before disease classification to ensure **trustworthy and secure results**.
 
-Fake image detection using deep learning
+The system uses **ResNet-18 Convolutional Neural Networks** to:
 
-Plant disease classification using ResNet-18 CNN
+- Detect whether an image is **Real or Fake**
+- Classify plant disease only if the image is **authentic**
 
-Two-stage secure AI pipeline
+---
 
-Real-time image input support
+## 🚀 Key Features
 
-Treatment recommendation system
+- ✅ **Fake image detection using deep learning**
+- ✅ **Plant disease classification using ResNet-18 CNN**
+- ✅ **Secure two-stage AI prediction pipeline**
+- ✅ **Real-time image input support**
+- ✅ **Treatment recommendation system**
+- ✅ **Interactive web-based interface**
+- ✅ **Fully deployed using GitHub Pages**
 
-Interactive web-based presentation interface
+---
 
-Fully deployed using GitHub Pages
+## ⚙️ System Pipeline
 
-System Pipeline
+**Image Input**  
+→ **Fake Image Detector**  
+→ **Disease Classifier**  
+→ **Recommendation Engine**  
+→ **Final Output**
 
-Image Input
-→ Fake Image Detector
-→ Disease Classifier
-→ Recommendation Engine
-→ Output Result
+---
 
-Technologies Used
+## 🧠 Technologies Used
 
-Frontend
+### Frontend
+- **HTML**
+- **Tailwind CSS**
+- **JavaScript**
+- **Chart.js**
 
-HTML
+### Machine Learning
+- **Python**
+- **PyTorch**
+- **ResNet-18 CNN**
 
-Tailwind CSS
+### Deployment
+- **GitHub Pages**
 
-JavaScript
+### Dataset
+- **PlantVillage Dataset**
+- **Synthetic fake images generated using Stable Diffusion**
 
-Chart.js
+---
 
-Machine Learning
+## 📊 Results
 
-Python
+- **Disease Classification Accuracy:** 96.4%
+- **Improved system reliability**
+- **Secure and scalable architecture**
+- **Prevents AI-generated image manipulation**
 
-PyTorch
+---
 
-ResNet-18 CNN
+## 📚 Literature Basis
 
-Deployment
+This project builds upon prior research including:
 
-GitHub Pages
+- **Mohanty et al. (2016)** — CNN-based plant disease detection  
+- **Ferentinos (2018)** — Deep learning architectures for plant classification  
 
-Dataset
+This project improves existing systems by adding **image authenticity verification**.
 
-PlantVillage Dataset
+---
 
-Synthetic fake images generated using Stable Diffusion
+## 📁 Repository Structure
 
-Results
-
-Disease Classification Accuracy: 96.4%
-
-Improved reliability by filtering fake images
-
-Secure and scalable architecture
-
-Literature Basis
-
-Based on prior research including:
-
-Mohanty et al. (2016) — CNN-based plant disease detection
-
-Ferentinos (2018) — Deep learning architectures for plant classification
-
-This project improves upon existing systems by integrating authenticity verification.
-
-Repository Structure
-docs/
-│
-├── index.html
-├── mujlogo.jpg
-
-Author
-
-Garv Jhuremalani
-B.Tech Computer Science and Engineering
-Manipal University Jaipur
-
-Registration Number: 2427030363
-
-Guide
-
-Dr. Ashok Kumar Saini
-Department of Computer Science and Engineering
-Manipal University Jaipur
-
-Purpose
-
-This project was developed as part of the Problem Based Learning (PBL) academic curriculum.
