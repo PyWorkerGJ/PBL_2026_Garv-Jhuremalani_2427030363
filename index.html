@@ -14,6 +14,10 @@ section{scroll-margin-top:100px}
 .glass{background:rgba(255,255,255,.03);backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,.1)}
 .gradient-text{background:linear-gradient(90deg,#60a5fa,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 #timerContainer{background:#fff;color:#020617;border:3px solid #3b82f6;box-shadow:0 10px 40px rgba(0,0,0,.8);z-index:1000}
+.badge{display:inline-block;padding:2px 10px;border-radius:999px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.badge-blue{background:#1e3a5f;color:#60a5fa}
+.badge-green{background:#14291a;color:#4ade80}
+.badge-purple{background:#2d1b4e;color:#c084fc}
 </style>
 </head>
 <body onload="startTimer()">
@@ -36,7 +40,7 @@ section{scroll-margin-top:100px}
 <div class="hidden md:flex gap-6 text-xs uppercase tracking-widest font-bold opacity-80">
 <a href="#problem">Problem</a>
 <a href="#methodology">Methodology</a>
-<a href="#literature">Literature</a>
+<a href="#pipeline">Pipeline</a>
 <a href="#enhancements">Enhancements</a>
 <a href="#results">Results</a>
 <a href="#team">Team</a>
@@ -45,107 +49,223 @@ section{scroll-margin-top:100px}
 
 <main class="max-w-6xl mx-auto px-6 pt-40 pb-24 space-y-24">
 
+<!-- Hero -->
 <section class="text-center">
-<div class="text-xs text-slate-400 uppercase tracking-widest mb-4">ID: 2427030363</div>
-<h1 class="text-5xl md:text-6xl font-extrabold mb-6 uppercase">
-<span class="gradient-text">Plant Disease Detector with AI Image Validation System</span>
+<div class="text-xs text-slate-400 uppercase tracking-widest mb-4">ID: 2427030363 &nbsp;|&nbsp; PBL-2 &nbsp;|&nbsp; Jan–May 2026</div>
+<h1 class="text-5xl md:text-6xl font-extrabold mb-6 uppercase leading-tight">
+<span class="gradient-text">Plant Disease Detector</span><br>
+<span class="text-white text-3xl md:text-4xl font-bold">with AI-Generated Image Validation System</span>
 </h1>
 <p class="text-slate-400 max-w-3xl mx-auto italic text-lg border-l-2 border-blue-500/30 pl-6 text-left">
-Two-stage deep learning system using ResNet-18 that verifies authenticity before disease classification, ensuring reliable plant disease diagnosis and preventing AI-generated image misuse.
+A two-stage deep learning pipeline using ResNet-18 with pretrained ImageNet weights that first verifies whether a leaf image is real or AI-generated, then classifies the disease — ensuring reliable, tamper-proof plant disease diagnosis.
 </p>
+<div class="flex flex-wrap gap-3 justify-center mt-6">
+<span class="badge badge-blue">ResNet-18</span>
+<span class="badge badge-blue">PyTorch</span>
+<span class="badge badge-blue">Transfer Learning</span>
+<span class="badge badge-green">91.21% Fake Detection</span>
+<span class="badge badge-green">99.45% Disease Classification</span>
+<span class="badge badge-purple">Streamlit</span>
+</div>
 </section>
 
+<!-- Problem -->
 <section id="problem" class="grid md:grid-cols-2 gap-10">
 <div class="glass p-8 rounded-3xl border-l-4 border-blue-600">
 <h2 class="text-2xl font-extrabold mb-4">Problem Statement</h2>
-<p class="text-slate-400 text-sm">Traditional plant disease detection assumes all images are authentic. AI-generated images can mislead classifiers. This system introduces authenticity verification before classification to ensure reliable predictions.</p>
+<p class="text-slate-400 text-sm leading-relaxed">All existing plant disease detection systems assume input images are authentic. With the rise of AI image generators like Stable Diffusion and GANs, digitally manipulated leaf images can easily deceive classifiers — causing wrong diagnoses, corrupting research datasets, and enabling misuse like insurance fraud.</p>
+<p class="text-slate-400 text-sm mt-3 leading-relaxed">No existing system checks image authenticity before diagnosing disease. This project solves that gap.</p>
 </div>
 <div class="glass p-8 rounded-3xl">
-<h2 class="text-2xl font-extrabold mb-4">Objectives</h2>
-<ul class="text-slate-400 text-sm space-y-2">
-<li>Detect fake or AI-generated plant images</li>
-<li>Classify diseases accurately using CNN</li>
-<li>Build secure two-stage AI pipeline</li>
-<li>Improve reliability of AI predictions</li>
+<h2 class="text-2xl font-extrabold mb-4">Research Objectives</h2>
+<ul class="text-slate-400 text-sm space-y-3">
+<li class="flex gap-2"><span class="text-blue-400 mt-0.5">→</span> Detect real vs AI-generated/tampered plant leaf images</li>
+<li class="flex gap-2"><span class="text-blue-400 mt-0.5">→</span> Classify tomato leaf diseases from authentic images only</li>
+<li class="flex gap-2"><span class="text-blue-400 mt-0.5">→</span> Integrate both into a secure two-stage AI pipeline</li>
+<li class="flex gap-2"><span class="text-blue-400 mt-0.5">→</span> Add real-world usability features for practical deployment</li>
+<li class="flex gap-2"><span class="text-blue-400 mt-0.5">→</span> Analyze impact of fake images on classification accuracy</li>
 </ul>
 </div>
 </section>
 
+<!-- Methodology -->
 <section id="methodology">
 <h2 class="text-3xl font-black text-center mb-10 uppercase">Methodology</h2>
-<div class="grid md:grid-cols-3 gap-6">
+<div class="grid md:grid-cols-4 gap-6">
 <div class="glass p-6 rounded-2xl text-center">
 <i class="fas fa-database text-blue-500 text-2xl mb-3"></i>
 <h3 class="font-bold text-xs uppercase mb-2">Dataset</h3>
-<p class="text-slate-400 text-sm">PlantVillage used for real images. Fake images generated using Stable Diffusion and augmentation.</p>
+<p class="text-slate-400 text-sm">PlantVillage (5,452 real images, 4 tomato classes). Fake images generated via custom augmentation pipeline simulating AI artifacts.</p>
 </div>
 <div class="glass p-6 rounded-2xl text-center">
 <i class="fas fa-microchip text-purple-500 text-2xl mb-3"></i>
 <h3 class="font-bold text-xs uppercase mb-2">Model</h3>
-<p class="text-slate-400 text-sm">ResNet-18 CNN trained using PyTorch for authenticity and disease classification.</p>
+<p class="text-slate-400 text-sm">ResNet-18 with pretrained ImageNet weights (Transfer Learning). Dropout(0.3) added before final layer to prevent overfitting.</p>
 </div>
 <div class="glass p-6 rounded-2xl text-center">
-<i class="fas fa-code text-green-500 text-2xl mb-3"></i>
-<h3 class="font-bold text-xs uppercase mb-2">Pipeline</h3>
-<p class="text-slate-400 text-sm">Image → Fake Detector → Disease Classifier → Recommendation → Output</p>
+<i class="fas fa-sliders text-green-500 text-2xl mb-3"></i>
+<h3 class="font-bold text-xs uppercase mb-2">Training</h3>
+<p class="text-slate-400 text-sm">Adam optimizer, lr=0.0001, weight decay 1e-4. 80/20 train-val split. Early stopping with patience=4 to prevent overfitting.</p>
+</div>
+<div class="glass p-6 rounded-2xl text-center">
+<i class="fas fa-code text-pink-500 text-2xl mb-3"></i>
+<h3 class="font-bold text-xs uppercase mb-2">Deployment</h3>
+<p class="text-slate-400 text-sm">Streamlit web app with file upload, webcam capture, confidence thresholding, and session history logging.</p>
 </div>
 </div>
 </section>
 
+<!-- Pipeline -->
+<section id="pipeline">
+<h2 class="text-3xl font-black text-center mb-10 uppercase">System Pipeline</h2>
+<div class="glass p-8 rounded-3xl">
+<div class="flex flex-col md:flex-row items-center justify-center gap-4 text-sm text-center flex-wrap">
+<div class="glass p-4 rounded-xl w-36">
+<i class="fas fa-image text-slate-400 mb-2 text-lg"></i>
+<div class="font-bold text-xs uppercase text-slate-300">Input Image</div>
+<div class="text-slate-500 text-xs mt-1">Upload or Webcam</div>
+</div>
+<i class="fas fa-arrow-right text-slate-600 hidden md:block"></i>
+<div class="glass p-4 rounded-xl w-36 border border-blue-500/30">
+<i class="fas fa-shield-alt text-blue-400 mb-2 text-lg"></i>
+<div class="font-bold text-xs uppercase text-blue-300">Fake Detector</div>
+<div class="text-slate-500 text-xs mt-1">ResNet-18 Binary</div>
+<div class="text-slate-500 text-xs">91.21% acc</div>
+</div>
+<i class="fas fa-arrow-right text-slate-600 hidden md:block"></i>
+<div class="glass p-4 rounded-xl w-36 border border-red-500/20">
+<i class="fas fa-ban text-red-400 mb-2 text-lg"></i>
+<div class="font-bold text-xs uppercase text-red-300">If Fake</div>
+<div class="text-slate-500 text-xs mt-1">Pipeline halts</div>
+<div class="text-slate-500 text-xs">Alert shown</div>
+</div>
+<i class="fas fa-arrow-right text-slate-600 hidden md:block"></i>
+<div class="glass p-4 rounded-xl w-36 border border-green-500/30">
+<i class="fas fa-leaf text-green-400 mb-2 text-lg"></i>
+<div class="font-bold text-xs uppercase text-green-300">If Real</div>
+<div class="font-bold text-xs uppercase text-green-300">Disease Classifier</div>
+<div class="text-slate-500 text-xs mt-1">ResNet-18 Multi-class</div>
+<div class="text-slate-500 text-xs">99.45% acc</div>
+</div>
+<i class="fas fa-arrow-right text-slate-600 hidden md:block"></i>
+<div class="glass p-4 rounded-xl w-36 border border-purple-500/30">
+<i class="fas fa-prescription-bottle-alt text-purple-400 mb-2 text-lg"></i>
+<div class="font-bold text-xs uppercase text-purple-300">Treatment</div>
+<div class="text-slate-500 text-xs mt-1">Recommendation</div>
+<div class="text-slate-500 text-xs">+ Confidence check</div>
+</div>
+</div>
+<div class="mt-6 text-center text-xs text-slate-500">Disease classes: Early Blight · Late Blight · Leaf Mold · Healthy</div>
+</div>
+</section>
+
+<!-- Literature -->
 <section id="literature">
 <h2 class="text-3xl font-black text-center mb-10 uppercase">Literature Review</h2>
 <div class="grid md:grid-cols-2 gap-6">
 <div class="glass p-6 rounded-2xl">
-<h3 class="text-blue-400 font-bold text-sm mb-2">Mohanty et al. (2016)</h3>
-<p class="text-slate-400 text-sm">CNN achieved >99% accuracy using PlantVillage dataset but lacked authenticity verification.</p>
+<h3 class="text-blue-400 font-bold text-sm mb-1">Mohanty et al. (2016)</h3>
+<p class="text-slate-400 text-sm">CNN on PlantVillage achieved &gt;99% accuracy but all images were lab-controlled. No authenticity check.</p>
 </div>
 <div class="glass p-6 rounded-2xl">
-<h3 class="text-blue-400 font-bold text-sm mb-2">Ferentinos (2018)</h3>
-<p class="text-slate-400 text-sm">Compared deep learning architectures but did not address fake image detection.</p>
+<h3 class="text-blue-400 font-bold text-sm mb-1">Ferentinos (2018)</h3>
+<p class="text-slate-400 text-sm">Compared VGG, AlexNet, ResNet architectures. High accuracy on clean studio images. No fake image evaluation.</p>
+</div>
+<div class="glass p-6 rounded-2xl">
+<h3 class="text-blue-400 font-bold text-sm mb-1">Too et al. (2019)</h3>
+<p class="text-slate-400 text-sm">ResNet and DenseNet outperform older models. Still constrained to clean datasets with no out-of-distribution testing.</p>
+</div>
+<div class="glass p-6 rounded-2xl">
+<h3 class="text-blue-400 font-bold text-sm mb-1">GAN Studies (2022–24)</h3>
+<p class="text-slate-400 text-sm">Synthetic leaf images used for augmentation. None examined misuse of generated images to deceive classifiers.</p>
 </div>
 <div class="glass p-6 rounded-2xl md:col-span-2 border border-purple-500/30">
-<h3 class="text-purple-400 font-bold text-sm mb-2">Research Gap</h3>
-<p class="text-slate-400 text-sm">Existing systems focus only on classification accuracy and ignore authenticity verification. This project solves that limitation.</p>
+<h3 class="text-purple-400 font-bold text-sm mb-2">Research Gap — What This Project Solves</h3>
+<p class="text-slate-400 text-sm">Every reviewed system assumes all inputs are authentic. None include a pre-classification authenticity check. This project directly addresses that gap with a two-stage pipeline that validates image authenticity before any disease prediction is made.</p>
 </div>
 </div>
 </section>
 
+<!-- Enhancements -->
 <section id="enhancements">
-<h2 class="text-3xl font-black text-center mb-10 uppercase">Enhancements</h2>
+<h2 class="text-3xl font-black text-center mb-4 uppercase">PBL-2 Enhancements</h2>
+<p class="text-center text-slate-500 text-sm mb-10">Built on top of the PBL-1 foundation during 4th semester (PBL-2)</p>
 <div class="grid md:grid-cols-2 gap-6">
-<div class="glass p-6 rounded-2xl">
-<h3 class="text-green-400 font-bold mb-2">Webcam Integration</h3>
-<p class="text-slate-400 text-sm">Streamlit camera_input enables real-time leaf capture and instant prediction without uploading files.</p>
+<div class="glass p-6 rounded-2xl border-l-4 border-green-500">
+<div class="flex items-center gap-3 mb-3">
+<i class="fas fa-camera text-green-400"></i>
+<h3 class="text-green-400 font-bold">Webcam Integration</h3>
 </div>
-<div class="glass p-6 rounded-2xl">
-<h3 class="text-green-400 font-bold mb-2">Recommendation Engine</h3>
-<p class="text-slate-400 text-sm">Maps detected disease to treatment advice, transforming system into decision-support tool.</p>
+<p class="text-slate-400 text-sm">Streamlit's <code class="text-slate-300 bg-slate-800 px-1 rounded">st.camera_input()</code> enables real-time leaf capture directly in the browser — no file upload needed. Useful for field use by farmers.</p>
+</div>
+<div class="glass p-6 rounded-2xl border-l-4 border-blue-500">
+<div class="flex items-center gap-3 mb-3">
+<i class="fas fa-prescription-bottle-alt text-blue-400"></i>
+<h3 class="text-blue-400 font-bold">Treatment Recommendation Engine</h3>
+</div>
+<p class="text-slate-400 text-sm">Disease predictions are mapped to specific treatment advice via a lookup dictionary. Transforms the system from a pure classifier into a practical decision-support tool for farmers.</p>
+</div>
+<div class="glass p-6 rounded-2xl border-l-4 border-yellow-500">
+<div class="flex items-center gap-3 mb-3">
+<i class="fas fa-exclamation-triangle text-yellow-400"></i>
+<h3 class="text-yellow-400 font-bold">Confidence Threshold Warning</h3>
+</div>
+<p class="text-slate-400 text-sm">If disease classifier confidence is below 60%, the system warns the user to retake the image instead of showing an unreliable prediction. Prevents false positive diagnoses.</p>
+</div>
+<div class="glass p-6 rounded-2xl border-l-4 border-purple-500">
+<div class="flex items-center gap-3 mb-3">
+<i class="fas fa-history text-purple-400"></i>
+<h3 class="text-purple-400 font-bold">Session Prediction History</h3>
+</div>
+<p class="text-slate-400 text-sm">All predictions within a session are stored using Streamlit session state and displayed as an expandable log in the sidebar — timestamp, authenticity, disease, and confidence per entry.</p>
 </div>
 </div>
 </section>
 
+<!-- Results -->
 <section id="results" class="glass p-10 rounded-3xl border-t-4 border-blue-500">
-<h2 class="text-2xl font-black mb-6 text-center uppercase">Results</h2>
-<div class="grid md:grid-cols-2 gap-8 items-center">
-<div class="h-56"><canvas id="resultsChart"></canvas></div>
-<div>
-<div class="text-blue-400 font-black text-3xl mb-2">Accuracy: 96.4%</div>
-<p class="text-slate-400 text-sm">Calculated using test dataset evaluation. Fake image detector and disease classifier together provide reliable predictions.</p>
+<h2 class="text-2xl font-black mb-8 text-center uppercase">Training Results</h2>
+<div class="grid md:grid-cols-3 gap-8 items-start">
+<div class="md:col-span-2 h-64"><canvas id="resultsChart"></canvas></div>
+<div class="space-y-4">
+<div class="glass p-4 rounded-2xl text-center border border-blue-500/30">
+<div class="text-slate-400 text-xs uppercase mb-1">Fake Detector</div>
+<div class="text-blue-400 font-black text-3xl">91.21%</div>
+<div class="text-slate-500 text-xs mt-1">Val Acc · 2,560 images · ResNet-18</div>
 </div>
+<div class="glass p-4 rounded-2xl text-center border border-green-500/30">
+<div class="text-slate-400 text-xs uppercase mb-1">Disease Classifier</div>
+<div class="text-green-400 font-black text-3xl">99.45%</div>
+<div class="text-slate-500 text-xs mt-1">Val Acc · 5,452 images · 4 classes</div>
+</div>
+<div class="glass p-4 rounded-2xl text-center">
+<div class="text-slate-400 text-xs uppercase mb-1">Early Stopping at</div>
+<div class="text-white font-black text-2xl">Epoch 9</div>
+<div class="text-slate-500 text-xs mt-1">Disease model · Patience=4</div>
+</div>
+</div>
+</div>
+<div class="mt-8 grid md:grid-cols-4 gap-4 text-center text-xs">
+<div class="glass p-3 rounded-xl"><div class="text-slate-400">Architecture</div><div class="font-bold text-slate-200 mt-1">ResNet-18 × 2</div></div>
+<div class="glass p-3 rounded-xl"><div class="text-slate-400">Optimizer</div><div class="font-bold text-slate-200 mt-1">Adam lr=0.0001</div></div>
+<div class="glass p-3 rounded-xl"><div class="text-slate-400">Regularization</div><div class="font-bold text-slate-200 mt-1">Dropout 0.3 + WD</div></div>
+<div class="glass p-3 rounded-xl"><div class="text-slate-400">Train/Val Split</div><div class="font-bold text-slate-200 mt-1">80% / 20%</div></div>
 </div>
 </section>
 
+<!-- Team -->
 <section id="team" class="text-center">
 <h2 class="text-xs uppercase tracking-widest text-slate-500 mb-6">Academic Credits</h2>
 <div class="flex justify-center gap-8 flex-wrap">
 <div class="glass px-8 py-6 rounded-2xl border-b-4 border-blue-600">
-<p class="text-blue-500 text-xs uppercase">Guide</p>
+<p class="text-blue-500 text-xs uppercase">Project Guide</p>
 <p class="font-bold">Dr. Ashok Kumar Saini</p>
+<p class="text-xs text-slate-500">Department of CSE</p>
 </div>
 <div class="glass px-8 py-6 rounded-2xl border-b-4 border-slate-700">
 <p class="text-slate-400 text-xs uppercase">Student</p>
 <p class="font-bold">Garv Jhuremalani</p>
-<p class="text-xs text-slate-500">2427030363 | Section-B</p>
+<p class="text-xs text-slate-500">2427030363 | Section-B | IV Sem</p>
 </div>
 </div>
 </section>
@@ -153,8 +273,9 @@ Two-stage deep learning system using ResNet-18 that verifies authenticity before
 </main>
 
 <footer class="py-8 text-center bg-black/40 border-t border-slate-900">
-<p class="text-slate-600 text-xs uppercase">Manipal University Jaipur • CSE • 2026</p>
+<p class="text-slate-600 text-xs uppercase">Manipal University Jaipur • CSE • PBL-2 • 2026</p>
 </footer>
+
 <script>
 let sec=0;
 function startTimer(){
@@ -169,46 +290,44 @@ document.getElementById("displayTime").innerText=
 
 <script>
 const ctx = document.getElementById('resultsChart').getContext('2d');
-new Chart(ctx,{ ... });
-</script>
-
-<script>
-const ctx = document.getElementById('resultsChart').getContext('2d');
-
 new Chart(ctx,{
-    type:'bar',
-    data:{
-        labels:['Existing System','Our System'],
-        datasets:[{
-            data:[70,92],
-            backgroundColor:['#334155','#3b82f6'],
-            borderRadius:8,
-            barThickness:80,
-            maxBarThickness:200
-        }]
-    },
-    options:{
-        responsive:true,
-        maintainAspectRatio:false,
-        plugins:{
-            legend:{display:false}
-        },
-        scales:{
-            y:{
-                beginAtZero:true,
-                grid:{color:'rgba(255,255,255,0.05)'},
-                ticks:{color:'#64748b'}
-            },
-            x:{
-                grid:{display:false},
-                ticks:{color:'#64748b'}
-            }
+  type:'bar',
+  data:{
+    labels:['Existing Systems\n(Avg)', 'Fake Detector\n(Ours)', 'Disease Classifier\n(Ours)'],
+    datasets:[{
+      label:'Accuracy %',
+      data:[72, 91.21, 99.45],
+      backgroundColor:['#1e3a5f','#1d4ed8','#15803d'],
+      borderRadius:8,
+      barThickness:60,
+    }]
+  },
+  options:{
+    responsive:true,
+    maintainAspectRatio:false,
+    plugins:{
+      legend:{display:false},
+      tooltip:{
+        callbacks:{
+          label: ctx => ` ${ctx.raw}%`
         }
+      }
+    },
+    scales:{
+      y:{
+        beginAtZero:true,
+        max:100,
+        grid:{color:'rgba(255,255,255,0.05)'},
+        ticks:{color:'#64748b', callback: v => v+'%'}
+      },
+      x:{
+        grid:{display:false},
+        ticks:{color:'#64748b'}
+      }
     }
+  }
 });
 </script>
-
-
 
 </body>
 </html>
